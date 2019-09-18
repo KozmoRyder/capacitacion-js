@@ -12,4 +12,8 @@ $('#boton_enviar').on('click', function () {
             alert('Datos enviados');
         }
     });
+    $('#idInput').val('');
+    $('#nombreInput').val('');
+    $('#apellidoInput').val('');
+    
 });
