@@ -10,40 +10,68 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<h3>
+    Insertar Datos
+</h3>
+
+<div>
+    <div style="margin-bottom: 20px" class="input-group-prepend">
+        <span style="width: 200px; text-align: center" class="input-group-text"><strong>ID</strong></span>
+        <input margin-left: 2em; style="width: 300px; margin-left: 1em;" type="text" aria-label="id"
+            class="form-control" id="idInput">
+    </div>
+    <div style="margin-bottom: 20px" class="input-group-prepend">
+        <span style="width: 200px;" class="input-group-text"><strong>NOMBRE</strong></span>
+        <input style="width: 300px;margin-left: 1em; " type="text" aria-label="nombre" class="form-control"
+            id="nombreInput">
+    </div>
+    <div style="margin-bottom: 20px" class="input-group-prepend">
+        <span style="width: 200px;" class="input-group-text"><strong>APELLIDO</strong></span>
+        <input style="width: 300px; margin-left: 1em;" type="text" aria-label="apellido" class="form-control"
+            id="apellidoInput">
+    </div>
+    <a id="boton_enviar" class="btn btn-info" role="button" style="width: 300px">COMMIT</a>
+</div>
+
+
+
 
 <script>
 
+    // var id = $('#idInput').val();
+    // console.log(id);
 
-    function input() {
+    $('#boton_enviar').on('click', function () {
+
+        var icompleto;
+
         var idinput = document.getElementById("idInput").value;
-
         var ninput = document.getElementById("nombreInput").value;
-
         var ainput = document.getElementById("apellidoInput").value;
 
-        var icompleto = [idinput, ninput, ainput];
+
+
+
+        icompleto = {
+            id: idinput,
+            nombre: ninput,
+            apellido: ainput
+        };
         console.log(icompleto);
 
+        $.ajax({
+            url: '/recibirDatos',
+            method: 'POST',
+            data: icompleto,
+            success: function (data) {
+                alert('Datos enviados')
+            }
+        });
+    });
 
-}
-        </script>
 
-        <h3>
-            Insertar Datos
-</h3>
 
-            <div>
-                <div style="margin-bottom: 20px" class="input-group-prepend">
-                    <span style="width: 200px; text-align: center" class="input-group-text"><strong>ID</strong></span>
-                    <input margin-left: 2em; style="width: 300px; margin-left: 1em;"  type="text" aria-label="id" class="form-control" id="idInput">
-    </div>
-                <div style="margin-bottom: 20px" class="input-group-prepend">
-                    <span style="width: 200px;" class="input-group-text"><strong>NOMBRE</strong></span>
-                    <input style="width: 300px;margin-left: 1em; " type="text" aria-label="nombre" class="form-control" id="nombreInput">
-    </div>
-                    <div style="margin-bottom: 20px" class="input-group-prepend">
-                        <span style="width: 200px;" class="input-group-text"><strong>APELLIDO</strong></span>
-                        <input style="width: 300px; margin-left: 1em;" type="text" aria-label="apellido" class="form-control" id="apellidoInput">
-    </div>
-                        <a class="btn btn-info" role="button" style="width: 300px" onclick="input();">COMMIT</a>
-                    </div>
+</script>
