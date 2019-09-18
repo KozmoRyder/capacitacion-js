@@ -7,50 +7,56 @@
   integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
   integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
-  
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 
-  
 <h3>
   Ver datos
 </h3>
 
-<table class="table" style="width:100%">
+<table class="table" style="width:100%" id="tablaDeJefes">
   <tr>
     <th>ID</th>
     <th>NOMBRE</th>
     <th>APELLIDO</th>
   </tr>
-  <tr>
-    <td>Jill</td>
-    <td>Smith</td>
-    <td>50</td>
-  </tr>
-  <tr>
-    <td>Eve</td>
-    <td>Jackson</td>
-    <td>94</td>
-  </tr>
-  <tr>
-    <td>Jill</td>
-    <td>Smith</td>
-    <td>50</td>
-  </tr>
-  <tr>
-    <td>Eve</td>
-    <td>Jackson</td>
-    <td>94</td>
-  </tr>
-  <tr>
-    <td>Jill</td>
-    <td>Smith</td>
-    <td>50</td>
-  </tr>
-  <tr>
-    <td>Eve</td>
-    <td>Jackson</td>
-    <td>94</td>
-  </tr>
 </table>
+
+
+
+<script>
+
+
+  $.ajax({
+    type: "POST",
+    url: '/enviarDatos',
+    success: function (data) {
+      console.table(data);
+
+      let cantidadRegistros = data.length;
+      for (let i = 0; i < cantidadRegistros; i++) {
+        // for(let i in data){
+        let datosTotales = `<tr>
+          <td>${data[i].id}</td>
+          <td>${data[i].nombre}</td>
+          <td>${data[i].apellido}</td>  
+        </tr>`;
+
+        $('#tablaDeJefes').append(datosTotales);
+      }
+
+      // $('#tablaDeJefes').append(
+      //   data.map(row => `<tr>
+      //       <td>${row.id}</td>
+      //       <td>${row.nombre}</td>
+      //       <td>${row.apellido}</td>  
+      //     </tr>`)
+      // ); 
+
+
+    }
+  });
+
+
+  // console.log(datosTotales);
+</script>

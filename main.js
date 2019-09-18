@@ -22,14 +22,23 @@ app.get('/datos', (req, res) => {
     res.render('datos.html');
 });
 
+// {
+//     id: 1,
+//     nombre: "asd",
+//     apellido: "asda"
+// }
+let datos_table = [];
 app.post('/recibirDatos', (req, res) => {
     let data = req.body;
-
+    datos_table.push(data);
     console.log(data);
 
     res.send(true);
 });
 
+app.post('/enviarDatos', (req, res) => {
+    res.send(datos_table);
+});
 
 
 // app.get('/insertar/:mensaje', (req, res) => {
