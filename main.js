@@ -40,6 +40,12 @@ app.post('/enviarDatos', (req, res) => {
     res.send(datos_table);
 });
 
+app.post('/borrarDatos', (req, res) => {
+    datos_table = [];
+    res.send(true);
+});
+
+
 
 // app.get('/insertar/:mensaje', (req, res) => {
 //     res.render('main.html',{mensaje:req.params.mensaje});

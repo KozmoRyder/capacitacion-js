@@ -21,7 +21,8 @@
     <th>APELLIDO</th>
   </tr>
 </table>
-<a id="boton_ver_datos" href='/datos' class="btn btn-secondary" role="button" style="width: 300px">VACIAR TABLA</a>
+<a id="boton_borrar_datos" href="/datos" class="btn btn-secondary" role="button" style="width: 300px">VACIAR TABLA</a>
+<a id="boton_inicio" href="/" class="btn btn-primary" role="button" style="width: 300px">INICIO</a>
 
 
 <script>
@@ -58,8 +59,16 @@
   });
 
   $('#boton_borrar_datos').on('click', function () {
-      $('#tablaDeJefes').value="";
+    $.ajax({
+      type: "POST",
+      url: '/borrarDatos',
+      success: function () {
+        console.log("Se limpio la tabla");
 
-});
+      }
+    }
+    )
+
+  });
   // console.log(datosTotales);
 </script>
