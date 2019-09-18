@@ -34,6 +34,8 @@
             id="apellidoInput">
     </div>
     <a id="boton_enviar" class="btn btn-info" role="button" style="width: 300px">COMMIT</a>
+    <a id="boton_ver_datos" href='/datos' class="btn btn-secondary" role="button" style="width: 300px">VER DATOS</a>
+    
 </div>
 
 
@@ -58,7 +60,7 @@
             apellido: ainput
         };
         console.log(icompleto);
-
+        
         $.ajax({
             url: '/recibirDatos',
             method: 'POST',
@@ -67,6 +69,9 @@
                 alert('Datos enviados')
             }
         });
+        idInput.value="";
+        nombreInput.value="";
+        apellidoInput.value="";
     });
 
 
