@@ -23,10 +23,6 @@ app.get('/datos', (req, res) => {
 
       
 
-
-
-
-
 app.listen(3000, function () {
     console.log('Se inicia el proyecto')
 });
