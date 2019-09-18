@@ -1,0 +1,33 @@
+<head>
+    <% include ../partials/new_head %>
+</head>
+
+<h3>
+    Insertar Datos
+</h3>
+
+<div>
+    <div style="margin-bottom: 20px" class="input-group-prepend">
+        <span style="width: 200px; text-align: center" class="input-group-text"><strong>ID</strong></span>
+        <input margin-left: 2em; style="width: 300px; margin-left: 1em;" type="text" aria-label="id"
+            class="form-control" id="idInput">
+    </div>
+    <div style="margin-bottom: 20px" class="input-group-prepend">
+        <span style="width: 200px;" class="input-group-text"><strong>NOMBRE</strong></span>
+        <input style="width: 300px;margin-left: 1em; " type="text" aria-label="nombre" class="form-control"
+            id="nombreInput">
+    </div>
+    <div style="margin-bottom: 20px" class="input-group-prepend">
+        <span style="width: 200px;" class="input-group-text"><strong>APELLIDO</strong></span>
+        <input style="width: 300px; margin-left: 1em;" type="text" aria-label="apellido" class="form-control"
+            id="apellidoInput">
+    </div>
+    <a id="boton_enviar" class="btn btn-info" role="button" style="width: 300px">COMMIT</a>
+    <a id="boton_ver_datos" href='/datos' class="btn btn-secondary" role="button" style="width: 300px">VER DATOS</a>
+    
+</div>
+
+
+
+
+<script src="static/js/insertar_custom.js"></script>

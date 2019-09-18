@@ -4,6 +4,8 @@ const fs = require('fs');
 var bodyParser = require('body-parser');
 
 
+// app.use(express.static('public'));
+app.use('/static', express.static(__dirname + '/public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : true}));
 
@@ -11,15 +13,15 @@ app.engine('html',require('ejs').renderFile);
 app.set('view engine','html');
 
 app.get('/', (req, res) => {
-    res.render('main.html',{mensaje:'Que se desea hacer?'});
+    res.render('pages/main',{mensaje:'Que se desea hacer?'});
 });
 
 app.get('/insertar', (req, res) => {
-    res.render('insertar.html');
+    res.render('pages/insertar');
 });
 
 app.get('/datos', (req, res) => {
-    res.render('datos.html');
+    res.render('pages/datos');
 });
 
 // {
