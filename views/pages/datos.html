@@ -1,81 +1,97 @@
 <<head>
   <% include ../partials/new_head %>
-</head>
+  </head>
 
 
-<div style="position: absolute; width: 100%; height: 100%;">
-  <h3 style="margin-left: 40%">
-    Ver datos
-  </h3>
-  <style>
-  table {
-  border-collapse: collapse;
-  width: 100%;
-  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-}
-table, td, th {
-  border: 1px solid black;
-}
-  </style>
-  <table class="table" id="tablaDeJefes">
-    <tr>
-      <th style="width: 100px">ID</th>
-      <th style="width: 100px">NOMBRE</th>
-      <th style="width: 100px">APELLIDO</th>
-    </tr>
-  </table>
- <div style="margin-left: 25%">
-  <a id="boton_borrar_datos" href="/datos" class="btn btn-secondary" role="button" style="width: 300px">VACIAR TABLA</a>
-  <a id="boton_inicio" href="/" class="btn btn-primary" role="button" style="width: 300px;">INICIO</a>
+  <div style="position: absolute; width: 100%; height: 100%;">
+    <h3 style="margin-left: 40%">
+      Ver datos
+    </h3>
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+      }
 
- </div>
-</div>
+      table,
+      td,
+      th {
+        border: 1px solid black;
+      }
+    </style>
+    <table class="display" id="tablaDeJefes">
+      <thead>
+        <tr>
+          <th style="width: 100px">ID</th>
+          <th style="width: 100px">NOMBRE</th>
+          <th style="width: 100px">APELLIDO</th>
+        </tr>
+      </thead>
+      <tbody>
+
+      </tbody>
+    </table>
+    <div style="margin-left: 25%">
+      <a id="boton_borrar_datos" href="/datos" class="btn btn-secondary" role="button" style="width: 300px">VACIAR
+        TABLA</a>
+      <a id="boton_inicio" href="/" class="btn btn-primary" role="button" style="width: 300px;">INICIO</a>
+
+    </div>
+  </div>
 
 
-<script>
+  <script>
 
 
-  $.ajax({
-    type: "POST",
-    url: '/enviarDatos',
-    success: function (data) {
-      console.table(data);
+    $.ajax({
+      type: "POST",
+      url: '/enviarDatos',
+      success: function (data) {
+        console.table(data);
 
-      let cantidadRegistros = data.length;
-      for (let i = 0; i < cantidadRegistros; i++) {
-        // for(let i in data){
-        let datosTotales = `<tr>
+        let cantidadRegistros = data.length;
+        for (let i = 0; i < cantidadRegistros; i++) {
+          // for(let i in data){
+          let datosTotales = `<tr>
           <td>${data[i].id}</td>
           <td>${data[i].nombre}</td>
           <td>${data[i].apellido}</td>  
         </tr>`;
 
-        $('#tablaDeJefes').append(datosTotales);
-      }
+          $('#tablaDeJefes').append(datosTotales);
+        }
 
-      // $('#tablaDeJefes').append(
-      //   data.map(row => `<tr>
-      //       <td>${row.id}</td>
-      //       <td>${row.nombre}</td>
-      //       <td>${row.apellido}</td>  
-      //     </tr>`)
-      // ); 
+        // $('#tablaDeJefes').append(
+        //   data.map(row => `<tr>
+        //       <td>${row.id}</td>
+        //       <td>${row.nombre}</td>
+        //       <td>${row.apellido}</td>  
+        //     </tr>`)
+        // ); 
 
-
-    }
-  });
-
-  $('#boton_borrar_datos').on('click', function () {
-    $.ajax({
-      type: "POST",
-      url: '/borrarDatos',
-      success: function () {
-        console.log("Se limpio la tabla");
 
       }
-    }
-    )
+    });
 
-  });
-  // console.log(datosTotales);
-</script>
+    $('#boton_borrar_datos').on('click', function () {
+      $.ajax({
+        type: "POST",
+        url: '/borrarDatos',
+        success: function () {
+          console.log("Se limpio la tabla");
+
+        }
+      }
+      )
+
+    });
+    // console.log(datosTotales);
+
+    $(window).ready(function () {
+       $('#tablaDeJefes').DataTable({
+       });
+
+    })
+
+  </script>
