@@ -2,19 +2,34 @@
   <% include ../partials/new_head %>
 </head>
 
-<h3>
-  Ver datos
-</h3>
 
-<table class="table" style="width:100%" id="tablaDeJefes">
-  <tr>
-    <th>ID</th>
-    <th>NOMBRE</th>
-    <th>APELLIDO</th>
-  </tr>
-</table>
-<a id="boton_borrar_datos" href="/datos" class="btn btn-secondary" role="button" style="width: 300px">VACIAR TABLA</a>
-<a id="boton_inicio" href="/" class="btn btn-primary" role="button" style="width: 300px">INICIO</a>
+<div style="position: absolute; width: 100%; height: 100%;">
+  <h3 style="margin-left: 40%">
+    Ver datos
+  </h3>
+  <style>
+  table {
+  border-collapse: collapse;
+  width: 100%;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+table, td, th {
+  border: 1px solid black;
+}
+  </style>
+  <table class="table" id="tablaDeJefes">
+    <tr>
+      <th style="width: 100px">ID</th>
+      <th style="width: 100px">NOMBRE</th>
+      <th style="width: 100px">APELLIDO</th>
+    </tr>
+  </table>
+ <div style="margin-left: 25%">
+  <a id="boton_borrar_datos" href="/datos" class="btn btn-secondary" role="button" style="width: 300px">VACIAR TABLA</a>
+  <a id="boton_inicio" href="/" class="btn btn-primary" role="button" style="width: 300px;">INICIO</a>
+
+ </div>
+</div>
 
 
 <script>
