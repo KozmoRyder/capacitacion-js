@@ -55,7 +55,13 @@ app.post('/borrarDatos', (req, res) => {
 
       
 
-app.listen(3000, function () {
-    console.log('Se inicia el proyecto')
-});
+// app.listen(3000, function () {
+//     console.log('Se inicia el proyecto')
+// });
 
+const server = app.listen(process.env.PORT || 8080, () => {
+
+    const address = server.address().address;
+    const port = server.address().port;
+    console.log(`App listening on http://${address}:${port}`);
+})
