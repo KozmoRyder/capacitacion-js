@@ -14,4 +14,4 @@ COPY . /app
 EXPOSE 80
 
 # Run app.py when the container launches
-CMD ["npm start"]
+CMD ["node", "main.js"]
