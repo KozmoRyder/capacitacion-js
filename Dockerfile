@@ -2,7 +2,7 @@
 FROM node:10
 
 # Set the working directory to /app
-WORKDIR /capacitacion-js
+WORKDIR /app
 
 # Install any needed packages specified in requirements.txt
 RUN npm install
