@@ -47,18 +47,6 @@ app.post('/borrarDatos', (req, res) => {
     res.send(true);
 });
 
-
-
-// app.get('/insertar/:mensaje', (req, res) => {
-//     res.render('main.html',{mensaje:req.params.mensaje});
-// });
-
-      
-
-// app.listen(3000, function () {
-//     console.log('Se inicia el proyecto')
-// });
-
 const server = app.listen(process.env.PORT || 8080, () => {
 
     const address = server.address().address;
