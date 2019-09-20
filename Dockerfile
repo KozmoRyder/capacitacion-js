@@ -1,5 +1,5 @@
 # Use an official Nodejs runtime as a parent image
-FROM nodejs10
+FROM node:10
 
 # Set the working directory to /app
 WORKDIR /capacitacion-js

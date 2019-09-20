@@ -13,7 +13,7 @@ app.engine('html',require('ejs').renderFile);
 app.set('view engine','html');
 
 app.get('/', (req, res) => {
-    res.render('pages/main',{mensaje:'Que se desea hacer?'});
+    res.render('pages/main', {mensaje:'Que se desea hacer?'});
 });
 
 app.get('/insertar', (req, res) => {
