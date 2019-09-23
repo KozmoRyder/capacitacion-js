@@ -3,17 +3,19 @@ var app = express();
 const fs = require('fs');
 var bodyParser = require('body-parser');
 
+var consulta = require('./sql').consult;
+
 
 // app.use(express.static('public'));
 app.use('/static', express.static(__dirname + '/public'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended : true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 
-app.engine('html',require('ejs').renderFile);
-app.set('view engine','html');
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
 
 app.get('/', (req, res) => {
-    res.render('pages/main',{mensaje:'Que se desea hacer?'});
+    res.render('pages/main', { mensaje: 'Que se desea hacer?' });
 });
 
 app.get('/insertar', (req, res) => {
@@ -53,7 +55,9 @@ app.post('/borrarDatos', (req, res) => {
 //     res.render('main.html',{mensaje:req.params.mensaje});
 // });
 
-      
+consulta('SELECT * FROM ENTIDADES;', function (data) {
+    console.log(data);
+})
 
 app.listen(3000, function () {
     console.log('Se inicia el proyecto')

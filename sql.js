@@ -4,7 +4,7 @@ const mysql = require('mysql');
  * TODO(developer): specify SQL connection details
  */
 const connectionName =
-    process.env.INSTANCE_CONNECTION_NAME || 'my-nodejs-server-248322:southamerica-east1:srvmysql-des';
+     '35.198.5.54'; //process.env.INSTANCE_CONNECTION_NAME ||
 const dbUser = process.env.SQL_USER || 'mbravo';
 const dbPassword = process.env.SQL_PASSWORD || 'capacitacion';
 const dbName = process.env.SQL_NAME || 'webcapdb';
@@ -38,7 +38,7 @@ function consult(query, callback) {
     });
 }
 
-module.export = {
+module.exports = {
     consult
 }
 // consult();
