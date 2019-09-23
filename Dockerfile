@@ -12,7 +12,7 @@ RUN npm install
 # Copy the current directory contents into the container at /app
 COPY . /app
 
-CMD node main.js
+CMD ["node", "main.js"]
 
 # Make port 80 available to the world outside this container
 EXPOSE 80
