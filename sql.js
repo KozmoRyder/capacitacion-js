@@ -1,18 +1,18 @@
 var mysql = require('mysql');
 var connection = mysql.createConnection({
-  host     : '10.10.20.65',
-  port     : 4003,
-  user     : 'root',
-  password : '1234',
-  database : 'gst'
+    host: '10.10.20.65',
+    port: 4003,
+    user: 'root',
+    password: '1234'
+    // database: 'gst'
 });
- 
-connection.connect(function(err) {
-  if (err) {
-    console.error('error connecting: ' + err.stack);
-    return;
-  }
-  console.log('connected as id ' + connection.threadId);
+
+connection.connect(function (err) {
+    if (err) {
+        console.error('error connecting: ' + err.stack);
+        return;
+    }
+    console.log('connected as id ' + connection.threadId);
 });
 
 
@@ -32,10 +32,13 @@ connection.connect(function(err) {
  * 
  */
 
-let query = 'select * from gst.entidades;';
+function execute_sql(query, callback){
+    connection.query(query, function (error, results, fields) {
+        if (error) throw error;
+    
+        // console.log(results);   
+        callback(results) 
+    });
+}
 
-connection.query(query, function (error, results, fields) {
-    if (error) throw error;
-
-    console.log(results);
-  });
+module.exports = { execute_sql }
