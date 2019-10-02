@@ -1,10 +1,9 @@
 var mysql = require('mysql');
 var connection = mysql.createConnection({
-    host: '10.10.20.65',
-    port: 4003,
+    host: process.env.MYHOST || '10.10.20.65',
+    port: process.env.MYPORT || 4003,
     user: 'root',
     password: '1234'
-    // database: 'gst'
 });
 
 connection.connect(function (err) {
